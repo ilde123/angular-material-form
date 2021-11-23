@@ -1,0 +1,55 @@
+<nav>
+
+  <!-- Barra de navegación con listas -->
+<!--   <mat-list dense>
+    <mat-list-item>
+      <a routerLink="/home">Inicio</a>
+    </mat-list-item>
+    <mat-list-item>
+      <a routerLink="/listado">Listados de personajes</a>
+    </mat-list-item>
+    <mat-list-item>
+      <a routerLink="/search">Buscador de personajes</a>
+    </mat-list-item>
+   </mat-list> -->
+
+  <!-- Barra de navegación con tabs -->
+ <!--   <mat-tab-group mat-align-tabs="center" backgroundColor="primary" color="primary">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>home</mat-icon>
+        Inicio
+      </ng-template>
+      <app-home></app-home>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>list</mat-icon>
+        Listados de personajes
+      </ng-template>
+      <app-all-characters></app-all-characters>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>list</mat-icon>
+        Buscador de personajes
+      </ng-template>
+      <app-character-search></app-character-search>
+    </mat-tab>
+  </mat-tab-group> -->
+
+  <!-- Barra de navegación con tabs -->
+
+<nav mat-tab-nav-bar mat-align-tabs="center" backgroundColor="primary" color="primary" aria-label="menu">
+  <a
+    mat-tab-link
+    *ngFor="let link of navLinks"
+    [routerLink]="link.link"
+    routerLinkActive #rla="routerLinkActive"
+    [active]="rla.isActive">
+    <mat-icon>{{link.icon}}</mat-icon>
+    <span>{{link.label}}</span>
+  </a>
+</nav>
+<mat-divider></mat-divider>
+<router-outlet></router-outlet>

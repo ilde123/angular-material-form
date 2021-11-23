@@ -1,0 +1,88 @@
+<h1>Búscador de personajes</h1>
+
+<form #searchChar="ngForm">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Buscar por nombre</mat-label>
+    <input
+      (keyup)="searchByName(name)"
+      type="text"
+      required
+      name="name"
+      #name="ngModel"
+      matInput
+      [(ngModel)]="charname"
+      placeholder="Nombre...">
+
+    <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+      Nombre no válido
+    </mat-error>
+    <p *ngIf="noName !== ''" class="error">
+      {{noName}}
+    </p>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="button" (click)="searchByName(name)" [disabled]="name.invalid && (name.dirty || name.touched)">
+    <mat-icon>search</mat-icon>
+    <span>Buscar por nombre</span>
+  </button>
+</form>
+
+
+
+<form #searchChar="ngForm">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Buscar por id</mat-label>
+    <input
+      type="text"
+      required
+      name="id"
+      #id="ngModel"
+      matInput
+      [(ngModel)]="charid"
+      placeholder="Id...">
+
+    <mat-error *ngIf="id.invalid && (id.dirty || id.touched)">
+      Id no válido
+    </mat-error>
+
+    <p *ngIf="noId !== ''" class="error">
+      {{noId}}
+    </p>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="button" (click)="searchById(id)" [disabled]="id.invalid && (id.dirty || id.touched)">
+    <mat-icon>search</mat-icon>
+    <span>Buscar por id</span>
+  </button>
+</form>
+
+<mat-grid-list cols="2" >
+  <mat-grid-tile
+      *ngFor="let character of charactersSearch">
+      
+      <mat-card>
+        <mat-card-title>{{character.name}}</mat-card-title>
+        <mat-card-subtitle>{{character.species}}</mat-card-subtitle>
+        <mat-card-content>
+
+          <a routerLink="/detail/{{ character.id }}">
+            <div class="card">
+              <figure><img [src]="character.image" /></figure>
+            </div>
+          </a>
+        </mat-card-content>
+      </mat-card>
+      
+  </mat-grid-tile>
+</mat-grid-list>
+
+<!-- <ul>
+  <li *ngFor="let character of charactersSearch">
+    <a routerLink="/detail/{{ character.id }}">
+      <div class="card">
+        <div class="cardname">
+          <p>{{ character.name }}</p>
+        </div>
+        <figure><img [src]="character.image" /></figure>
+      </div>
+    </a>
+  </li>
+</ul> -->
