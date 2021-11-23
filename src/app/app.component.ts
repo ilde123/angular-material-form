@@ -12,7 +12,7 @@ export class AppComponent {
   activeLinkIndex = -1;
 
   constructor(private router: Router) {
-    // ruta de navegacion
+    // ruta de navegacion entre componentes
     this.navLinks = [
         {
             label: 'Inicio',
